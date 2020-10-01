@@ -1,32 +1,20 @@
 <template>
   <div id="app">
     <div class="maze-container">
-      <select v-model="difficulty">
-        <option value="easy">Easy</option>
-        <option value="normal">Normal</option>
-        <option value="hard">Hard</option>
-      </select>
-      <select v-model="strategy">
-        <option value="cluster">cluster</option>
-      </select>
       <div class="time">{{ time }}ms</div>
       <maze
-        :strategy="strategy"
-        :difficulty="difficulty"
         @start="onStart"
         @finish="onFinish"
         @init="onInit"
         :style="mazeStyle"
       ></maze>
     </div>
-    `,
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import Maze from "./components/Maze.vue";
-type Difficulty = "easy" | "normal" | "hard";
 type Strategy = "cluster";
 @Component({
   components: {
@@ -35,12 +23,11 @@ type Strategy = "cluster";
 })
 export default class App extends Vue {
   mazeStyle = {
-    width: "50%",
-    height: "50%"
+    width: "40%",
+    height: "30%"
   };
   startTime = 0;
   time = 0;
-  difficulty: Difficulty = "easy";
   strategy: Strategy = "cluster";
   onStart() {
     this.startTime = Date.now();

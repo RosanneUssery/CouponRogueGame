@@ -20,7 +20,6 @@ class Renderer {
       this.wallWidth = 2;
     }
   
-    // TODO: 境界を見直す
     clear(w: number, h: number) {
       this.ctx.clearRect(0, 0, w, h);
     }
