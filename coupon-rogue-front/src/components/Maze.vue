@@ -1,5 +1,5 @@
 <template>
-  <div class="maze" tabindex="-1" @keyup="onKeyUp">
+  <div class="maze" tabindex="-1" @keydown="onKeyDown">
     <canvas ref="mazeCanvas" :width="width" :height="height"></canvas>
     <canvas ref="goalCanvas" :width="width" :height="height"></canvas>
     <canvas
@@ -263,18 +263,18 @@ export default {
       }
     },
     // i think this functionality is broken... must fix
-    onKeyUp(event) {
-      switch (event.keyCode) {
-        case 37:
+    onKeyDown(event) {
+      switch (event.key) {
+        case "ArrowLeft":
           this.goLeft();
           break;
-        case 38:
+        case "ArrowUp":
           this.goUp();
           break;
-        case 39:
+        case "ArrowRight":
           this.goRight();
           break;
-        case 40:
+        case "ArrowDown":
           this.goDown();
       }
     },
