@@ -63,10 +63,6 @@ export default {
     };
   },
   props: {
-    difficulty: {
-      default: "normal",
-      type: String
-    },
     imagePath: {
       default: imagePath,
       type: String
@@ -88,24 +84,10 @@ export default {
       return (this.width - this.lx * this.cellWidth) / 2;
     },
     cellWidth() {
-      switch (this.difficulty) {
-        case "easy":
-          return 50;
-        case "hard":
-          return 10;
-        default:
-          return 20;
-      }
+      return 30;
     },
     cellHeight() {
-      switch (this.difficulty) {
-        case "easy":
-          return 50;
-        case "hard":
-          return 10;
-        default:
-          return 20;
-      }
+      return 30;
     },
     lx() {
       return Math.max(
@@ -145,7 +127,7 @@ export default {
   mounted() {
     this.height = this.$el.offsetHeight - this.margin;
     this.width = this.$el.offsetWidth - this.margin;
-    // アバター画像の読み込み
+
     const image = new Image();
     image.addEventListener("load", () => {
       this.image = image;
@@ -156,10 +138,6 @@ export default {
       this.goalImage = goalImage;
     });
     goalImage.src = this.goalImagePath;
-    window.addEventListener("resize", () => {
-      this.height = this.$el.offsetHeight;
-      this.width = this.$el.offsetWidth;
-    });
   },
   watch: {
     height() {
@@ -194,7 +172,7 @@ export default {
     isFinished() {
       if (this.isFinished) {
         this.renderConguraturations();
-        setTimeout(this.resetMaze, 800);
+        setTimeout(this.resetMaze, 3000);
       }
     }
   },
