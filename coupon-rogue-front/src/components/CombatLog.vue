@@ -1,5 +1,5 @@
 <template>
-    
+    <div>Combat Log Goes Here</div>
 </template>
 
 <script>
