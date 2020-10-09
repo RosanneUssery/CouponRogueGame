@@ -22,15 +22,15 @@
 </template>
 
 <script>
-import Vue from "vue";
-import Maze from "./getMaze";
-import imagePath from "../assets/cutelildude.png";
-import goalImagePath from "../assets/boss.jpg";
-import Renderer from "./Renderer";
+import Vue from "vue"
+import Maze from "./getMaze"
+import imagePath from "../assets/cutelildude.png"
+import goalImagePath from "../assets/boss.jpg"
+import Renderer from "./Renderer"
 // TODO: select strategy method, not a class
 const strategy = {
   cluster: Maze
-};
+}
 export default {
   name: "maze",
   data() {
@@ -59,8 +59,8 @@ export default {
         y: 0
       },
       isFinished: false,
-      seed: Date.now()
-    };
+      seed: Date.now(),
+    }
   },
   props: {
     imagePath: {
@@ -171,7 +171,7 @@ export default {
     },
     isFinished() {
       if (this.isFinished) {
-        this.renderConguraturations();
+        this.renderCongratulations();
         setTimeout(this.resetMaze, 3000);
       }
     }
@@ -182,12 +182,12 @@ export default {
       event.stopPropagation();
       const touch = event.touches[0];
       this.cache = {};
-      this.cache.rect = this.cache.avatorPosition = this.cache.originalPosition = Vue.set(
+      this.cache.rect = this.cache.avatarPosition = this.cache.originalPosition = Vue.set(
         this,
         "cache",
         {
           rect: touch.target.getBoundingClientRect(),
-          avatorPosition: {
+          avatarPosition: {
             x:
               this.player.x * this.cellWidth +
               this.marginLeft +
@@ -213,11 +213,11 @@ export default {
       event.preventDefault();
       event.stopPropagation();
       const touch = event.touches[0];
-      const avatorPos = this.cache.avatorPosition;
+      const avatarPos = this.cache.avatarPosition;
       const originalPos = this.cache.originalPosition;
       Vue.set(this, "dotPos", {
-        offsetX: touch.clientX - originalPos.x + avatorPos.x,
-        offsetY: touch.clientY - originalPos.y + avatorPos.y
+        offsetX: touch.clientX - originalPos.x + avatarPos.x,
+        offsetY: touch.clientY - originalPos.y + avatarPos.y
       });
       this.handleMove(this.dotPos);
     },
@@ -240,7 +240,6 @@ export default {
         this.moveBy(dx, dy);
       }
     },
-    // i think this functionality is broken... must fix
     onKeyDown(event) {
       switch (event.key) {
         case "ArrowLeft":
@@ -376,7 +375,7 @@ export default {
         renderer.drawCircle(goal.x, goal.y);
       }
     },
-    renderConguraturations() {
+    renderCongratulations() {
       const effectRenderer = new Renderer(
         this.$refs.effectCanvas.getContext("2d"),
         this.cellWidth,
