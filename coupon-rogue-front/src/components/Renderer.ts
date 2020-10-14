@@ -72,8 +72,10 @@ class Renderer {
     }
   
     drawText(text: string, x: number, y: number) {
-      const left = x * this.unitWidth + this.offsetLeft;
-      const top = y * this.unitHeight + this.offsetTop;
+      // const left = x * this.unitWidth + this.offsetLeft;
+      const left = x * -this.unitWidth;
+      // const top = y * this.unitHeight + this.offsetTop;
+      const top = y * -this.unitHeight;
       this.ctx.fillStyle = "black";
       this.ctx.fillText(text, left, top);
     }
