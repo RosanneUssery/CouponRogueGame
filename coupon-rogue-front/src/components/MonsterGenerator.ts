@@ -1,4 +1,4 @@
-import store from "@/components/store";
+import store from "@/components/store"
 import monsters from "@/components/monsters"
 
 class MonsterGenerator {
@@ -16,6 +16,9 @@ class MonsterGenerator {
     
     determineMonster() {
         let lvl = store.state.dungeonLevel
+        if (lvl == 0) {
+            return {}
+        }
         console.log("Monster level is " + lvl)
         let monsterName = monsters.returnMonster(lvl).name;
         console.log("Monster name is " + monsterName)

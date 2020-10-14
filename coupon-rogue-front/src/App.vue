@@ -4,9 +4,7 @@
     <div class="time">{{ time }}ms</div>
     <div class="flex-container column">
       <div class="flex-container row center-align-items">
-          <p>Discount Percentage (attack)</p>
-          <p>Dungeon Level</p>
-          <p>Hit Points</p>
+          <p>More stuff goes here</p>
       </div>
       <div class="maze-container">
          <maze
@@ -46,7 +44,7 @@ export default class App extends Vue {
     height: "300px"
   }
 
-  dungeonLevel = store.state.dungeonLevel
+  dungeonLevel = this.$store.state.dungeonLevel
   startTime = 0
   time = 0
   strategy: Strategy = "cluster"
@@ -61,8 +59,8 @@ export default class App extends Vue {
     this.increment()
   }
   increment() {
-     store.commit("increment")
-     this.dungeonLevel = store.state.dungeonLevel
+     this.$store.commit("increment")
+     this.dungeonLevel = this.$store.state.dungeonLevel
      console.log("Updating dungeon level to " + store.state.dungeonLevel)
      console.log("Dungeon level in App.vue is " + this.dungeonLevel)
   }

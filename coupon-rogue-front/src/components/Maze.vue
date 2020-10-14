@@ -28,8 +28,7 @@ import Maze from "./getMaze"
 import imagePath from "../assets/cutelildude.png"
 import goalImagePath from "../assets/boss.jpg"
 import Renderer from "./Renderer"
-import MonsterGenerator from "../components/MonsterGenerator"
-// import store from "./store"
+// import MonsterGenerator from "../components/MonsterGenerator"
 // TODO: select strategy method, not a class
 const strategy = {
   cluster: Maze
@@ -396,20 +395,20 @@ export default {
       const text = texts[Math.floor(texts.length * Math.random())];
       effectRenderer.drawText(text, this.player.x, this.player.y);
     },
-    renderRandomMonster() {
-      const monsterRenderer = new Renderer(
-              this.$refs.monsterCanvas.getContext("2d"),
-              this.cellWidth,
-              this.cellHeight,
-              this.marginLeft,
-              this.marginTop
-      )
-      if (Math.ceil(Math.random() * 100) > 90) {
-        monsterRenderer.ctx = this.$refs.monsterCanvas.getContext("2d");
-        const sigil = new MonsterGenerator().determineMonster().sigil
-        monsterRenderer.drawText(sigil, this.player.x, this.player.y)
-      }
-    },
+    // renderRandomMonster() {
+    //   const monsterRenderer = new Renderer(
+    //           this.$refs.monsterCanvas.getContext("2d"),
+    //           this.cellWidth,
+    //           this.cellHeight,
+    //           this.marginLeft,
+    //           this.marginTop
+    //   )
+    //   // if (Math.ceil(Math.random() * 100) > 90) {
+    //   //   monsterRenderer.ctx = this.$refs.monsterCanvas.getContext("2d");
+    //   //   const sigil = new MonsterGenerator().determineMonster().sigil
+    //   //   monsterRenderer.drawText(sigil, this.player.x, this.player.y)
+    //   // }
+    // },
     renderMaze() {
       this.$nextTick(() => {
         const renderer = new Renderer(
@@ -435,7 +434,7 @@ export default {
           const x2 = x1;
           const y2 = y1 + 1;
           renderer.drawLine(x1, y1, x2, y2);
-          this.renderRandomMonster()
+          // this.renderRandomMonster()
         }
 
         for (let j = 0; j < bondV.length; j++) {
